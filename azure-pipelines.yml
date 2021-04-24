@@ -18,6 +18,6 @@ steps:
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'TestRg'
     location: 'East US'
-    templateLocation: 'Linked artifact'
+    templateLocation: 'Url of the file'
     csmFile: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     deploymentMode: 'Incremental'
