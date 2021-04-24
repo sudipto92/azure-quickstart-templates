@@ -10,14 +10,8 @@ pool:
   name: Default
 
 steps:
-- task: AzureResourceManagerTemplateDeployment@3
+- task: AzureResourceGroupDeployment@2
   inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'ARM Template'
-    subscriptionId: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'TestRGIND'
-    location: 'South India'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
-    deploymentMode: 'Incremental'
+    azureSubscription: 
+    #action: 'Create Or Update Resource Group' # Options: create Or Update Resource Group, select Resource Group, start, stop, stopWithDeallocate, restart, delete, deleteRG
+    resourceGroupName: $(reource-group-name)
