@@ -6,7 +6,8 @@
 trigger:
 - master
 
-pool: testPool
+pool:
+name: Default
 
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
