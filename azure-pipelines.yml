@@ -13,11 +13,11 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'ARM'
+    azureResourceManagerConnection: 'ARM Template'
     subscriptionId: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'TestRg'
-    location: 'East US'
-    templateLocation: 'Url of the file'
-    csmFile: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
+    resourceGroupName: 'TestRGIND'
+    location: 'South India'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     deploymentMode: 'Incremental'
