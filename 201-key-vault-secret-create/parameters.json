@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
-            "value": "KeyVaultRG211"
+            "value": "KeyVaultRG21551"
         },
         "location": {
             "value": "eastus"
