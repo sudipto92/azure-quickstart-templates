@@ -6,62 +6,13 @@
             "type": "String"
         },
         "location": {
-			"type": "string",
-			"defaultValue": "[resourceGroup().location]"
+            "type": "String"
         },
         "sku": {
-			"type": "string",
-			"defaultValue": "Standard",
-			"allowedValues": [
-				"Standard",
-				"Premium"
-			]
+            "type": "String"
         },
         "accessPolicies": {
             "type": "Array"
-			"defaultValue": [
-                {
-                    "objectId": "f3240413-db7d-45dd-8b12-b466425983ec",
-                    "tenantId": "3a904252-8b95-4c7c-b37b-0846100d0308",
-                    "permissions": {
-                        "keys": [
-                            "Get",
-                            "List",
-                            "Update",
-                            "Create",
-                            "Import",
-                            "Delete",
-                            "Recover",
-                            "Backup",
-                            "Restore"
-                        ],
-                        "secrets": [
-                            "Get",
-                            "List",
-                            "Set",
-                            "Delete",
-                            "Recover",
-                            "Backup",
-                            "Restore"
-                        ],
-                        "certificates": [
-                            "Get",
-                            "List",
-                            "Update",
-                            "Create",
-                            "Import",
-                            "Delete",
-                            "Recover",
-                            "Backup",
-                            "Restore",
-                            "ManageContacts",
-                            "ManageIssuers",
-                            "GetIssuers",
-                            "ListIssuers",
-                            "SetIssuers",
-                            "DeleteIssuers"
-                        ]
-                    }
         },
         "tenant": {
             "type": "String"
