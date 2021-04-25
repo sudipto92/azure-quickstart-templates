@@ -108,7 +108,6 @@
         "tenantId": "[parameters('tenantId')]",
         "accessPolicies": [
           {
-            "objectId": "[parameters('objectId')]",
             "tenantId": "[parameters('tenantId')]",
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
