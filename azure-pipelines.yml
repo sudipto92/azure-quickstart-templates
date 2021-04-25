@@ -19,6 +19,6 @@ steps:
     resourceGroupName: 'TestRGIND'
     location: 'South India'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
+    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     overrideParameters: '-keyVaultName $(keyVaultName)'
     deploymentMode: 'Incremental'
