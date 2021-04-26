@@ -10,17 +10,20 @@ pool:
   name: Default
 
 variables:
-- name: resouceGroup
+- name: resouceGroup_var
   value: 'TestRGIND' 
-
+- name: subscriptionID_var
+  value: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
+- name: keyVault_name
+  value: 'test1111'
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'ARM Template'
-    subscriptionId: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
+    subscriptionId: ${{ variables.subscriptionID_var }}
     action: 'Create Or Update Resource Group'
-    resourceGroupName: ${{ variables.resouceGroup }}
+    resourceGroupName: ${{ variables.resouceGroup_var }}
     location: 'South India'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
