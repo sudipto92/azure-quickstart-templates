@@ -1,4 +1,4 @@
-{
+ {
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
@@ -14,7 +14,7 @@
 			"type": "string",
 			"defaultValue": "test_storage"
 		},
-		"name": {
+		"keyvault_name": {
 			"type": "String"
 		},
 		"location": {
@@ -54,7 +54,8 @@
 			"type": "Object"
 		}
 	},
-	"resources": [{
+	"resources": [
+	{
 		"type": "Microsoft.Resources/deployments",
 		"apiVersion": "2019-10-01",
 		"name": "nestedTemplate",
@@ -123,7 +124,7 @@
 			"parameters": {
 				"keyvault_name": {
 					"type": "String",
-					"defaultValue": "[parameters('name')]"
+					"defaultValue": "[parameters('keyvault_name')]"
 				},
 				"location": {
 					"type": "String",
