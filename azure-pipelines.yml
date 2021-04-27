@@ -29,4 +29,3 @@ steps:
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
     deploymentMode: 'Incremental'
-
