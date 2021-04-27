@@ -150,24 +150,7 @@
  								"networkAcls": "[parameters('networkAcls')]"
  							}
  						},
- 						{
- 							"type": "Microsoft.KeyVault/vaults/keys",
- 							"apiVersion": "2019-09-01",
- 							"name": "[concat(parameters('keyvault_name'), '/', parameters('keyName'))]",
-							"dependsOn": [
- 							        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
- 						         ],
- 							"properties": {
- 								"attributes": {
- 									"enabled": true
- 								},
- 								"kty": "RSA",
- 								"keyOps": [
- 									"encrypt"
- 								],
- 								"keySize": "2048"
- 							}
- 						},
+ 						
  						{
  							"type": "Microsoft.Storage/storageAccounts",
  							"apiVersion": "2019-06-01",
