@@ -28,5 +28,5 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-name testing5555 -keyName_value keyname123'
+    overrideParameters: '-name testing5555 -keyName keyname123'
     deploymentMode: 'Incremental'
