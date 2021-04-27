@@ -66,9 +66,9 @@
 			}
 		},
 		{
-			"name": "[parameters('keyName')]",
-			"type": "Microsoft.KeyVault/vaults/keys",
 			"apiVersion": "2019-09-01",
+			"type": "Microsoft.KeyVault/vaults/keys",
+			"name": "[parameters('keyName')]",
 			"properties": {
 				"attributes": {
 					"enabled": true
