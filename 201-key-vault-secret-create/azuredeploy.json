@@ -66,22 +66,22 @@
                 "networkAcls": "[parameters('networkAcls')]"
             }
         },
-{
-  "name": "parameters('keyName')",
-  "type": "Microsoft.KeyVault/vaults/keys",
-  "apiVersion": "2019-09-01",
-  "tags": {},
-  "properties": {
-    "attributes": {
-      "enabled": true
-    },
-    "kty": "RSA",
-    "keyOps": [
-      "encrypt"
-    ],
-    "keySize": "2048"
-  }
-}
+        {
+          "name": "parameters('keyName')",
+          "type": "Microsoft.KeyVault/vaults/keys",
+          "apiVersion": "2019-09-01",
+          "tags": {},
+          "properties": {
+            "attributes": {
+              "enabled": true
+            },
+            "kty": "RSA",
+            "keyOps": [
+              "encrypt"
+            ],
+            "keySize": "2048"
+          }
+        }
     ],
     "outputs": {}
 }
