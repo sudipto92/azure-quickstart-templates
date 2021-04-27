@@ -12,7 +12,7 @@
  		},
  		"storageName": {
  			"type": "string",
- 			"defaultValue": "teststorage12345"
+ 			"defaultValue": "test3322storage12345"
  		},
  		"keyvault_name": {
  			"type": "String"
