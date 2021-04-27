@@ -1,20 +1,20 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "resourceGroup": {
-      "type": "string",
-	  "defaultValue": "Devops_init"
-    },
-    "subscriptionID": {
-      "type": "string",
-      "defaultValue": "68ef03fa-8f28-44b6-a1dd-13113c3eb580"
-    },
-    "storageName": {
-      "type": "string",
-      "defaultValue": "test_storage"
-    }
-	"name": {
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"resourceGroup": {
+			"type": "string",
+			"defaultValue": "Devops_init"
+		},
+		"subscriptionID": {
+			"type": "string",
+			"defaultValue": "68ef03fa-8f28-44b6-a1dd-13113c3eb580"
+		},
+		"storageName": {
+			"type": "string",
+			"defaultValue": "test_storage"
+		},
+		"name": {
 			"type": "String"
 		},
 		"location": {
@@ -53,78 +53,74 @@
 		"networkAcls": {
 			"type": "Object"
 		}
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('resourceGroup')]",
-      "subscriptionId": "[parameters('subscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[parameters('storageName')]",
-            "location": "[parameters('location')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          },
-		  {
-			"type": "Microsoft.KeyVault/vaults",
-			"apiVersion": "2018-02-14",
-			"name": "[parameters('name')]",
-			"location": "[parameters('location')]",
-			"dependsOn": [],
-			"properties": {
-				"enabledForDeployment": "[parameters('enabledForDeployment')]",
-				"enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-				"enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
-				"enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
-				"accessPolicies": "[parameters('accessPolicies')]",
-				"tenantId": "[parameters('tenant')]",
-				"sku": {
-					"name": "[parameters('sku')]",
-					"family": "A"
-				},
-				"enableSoftDelete": "[parameters('enableSoftDelete')]",
-				"softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
-				"networkAcls": "[parameters('networkAcls')]"
-			}
-		},
-		{
-	            "type": "Microsoft.KeyVault/vaults/keys",
-        	    "apiVersion": "2019-09-01",
-            	    "name": "[concat(parameters('name'), '/', parameters('keyName'))]",
-			"dependsOn": [
-				"[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]"
-   			],
-			"properties": {
-				"attributes": {
-					"enabled": true
-				},
-				"kty": "RSA",
-				"keyOps": [
-					"encrypt"
-				],
-				"keySize": "2048"
-			}
+	},
+	"resources": [{
+		"type": "Microsoft.Resources/deployments",
+		"apiVersion": "2019-10-01",
+		"name": "nestedTemplate",
+		"resourceGroup": "[parameters('resourceGroup')]",
+		"subscriptionId": "[parameters('subscriptionID')]",
+		"properties": {
+			"mode": "Incremental",
+			"template": {
+				"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+				"contentVersion": "1.0.0.0",
+				"parameters": {},
+				"variables": {},
+				"resources": [{
+						"type": "Microsoft.Storage/storageAccounts",
+						"apiVersion": "2019-06-01",
+						"name": "[parameters('storageName')]",
+						"location": "[parameters('location')]",
+						"sku": {
+							"name": "Standard_LRS"
+						},
+						"kind": "Storage",
+						"properties": {}
+					},
+					{
+						"type": "Microsoft.KeyVault/vaults",
+						"apiVersion": "2018-02-14",
+						"name": "[parameters('name')]",
+						"location": "[parameters('location')]",
+						"dependsOn": [],
+						"properties": {
+							"enabledForDeployment": "[parameters('enabledForDeployment')]",
+							"enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+							"enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+							"enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
+							"accessPolicies": "[parameters('accessPolicies')]",
+							"tenantId": "[parameters('tenant')]",
+							"sku": {
+								"name": "[parameters('sku')]",
+								"family": "A"
+							},
+							"enableSoftDelete": "[parameters('enableSoftDelete')]",
+							"softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
+							"networkAcls": "[parameters('networkAcls')]"
+						}
+					},
+					{
+						"type": "Microsoft.KeyVault/vaults/keys",
+						"apiVersion": "2019-09-01",
+						"name": "[concat(parameters('name'), '/', parameters('keyName'))]",
+						"dependsOn": [
+							"[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]"
+						],
+						"properties": {
+							"attributes": {
+								"enabled": true
+							},
+							"kty": "RSA",
+							"keyOps": [
+								"encrypt"
+							],
+							"keySize": "2048"
+						}
+					}
+				]
+			},
+			"parameters": {}
 		}
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
+	}]
 }
