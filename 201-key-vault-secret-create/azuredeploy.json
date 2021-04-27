@@ -54,7 +54,14 @@
  			"type": "Object"
  		}
  	},
- 	"resources": [{
+ 	"resources": [
+					{
+						"type": "Microsoft.Resources/resourceGroups",
+						"apiVersion": "2018-05-01",
+						"location": "[parameters('location')]",
+						"name": "[parameters('resourceGroup')]"
+					},
+             {
  		"type": "Microsoft.Resources/deployments",
  		"apiVersion": "2019-10-01",
  		"name": "nestedTemplate",
@@ -121,12 +128,6 @@
  				},
  				"variables": {},
  				"resources": [
-					{
-						"type": "Microsoft.Resources/resourceGroups",
-						"apiVersion": "2018-05-01",
-						"location": "[parameters('location')]",
-						"name": "[parameters('resourceGroup')]"
-					},
  					{
  						"type": "Microsoft.KeyVault/vaults",
  						"apiVersion": "2018-02-14",
