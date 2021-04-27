@@ -154,6 +154,9 @@
  							"type": "Microsoft.KeyVault/vaults/keys",
  							"apiVersion": "2019-09-01",
  							"name": "[concat(parameters('keyvault_name'), '/', parameters('keyName'))]",
+							"dependsOn": [
+ 							        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+ 						         ],
  							"properties": {
  								"attributes": {
  									"enabled": true
