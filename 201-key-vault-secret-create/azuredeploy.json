@@ -173,59 +173,7 @@
  					}
  				]
  			},
- 			"parameters": {
- 				"keyvault_name": {
- 					"type": "String",
- 				},
- 				"location": {
- 					"type": "String",
- 					"defaultValue": "[parameters('location')]"
- 				},
- 				"sku": {
- 					"type": "String",
- 					"defaultValue": "[parameters('sku')]"
- 				},
- 				"keyName": {
- 					"type": "String",
- 					"defaultValue": "[parameters('keyName')]"
- 				},
- 				"accessPolicies": {
- 					"type": "Array",
- 					"defaultValue": "[parameters('accessPolicies')]"
- 				},
- 				"tenant": {
- 					"type": "String",
- 					"defaultValue": "[parameters('tenant')]"
- 				},
- 				"enabledForDeployment": {
- 					"type": "Bool",
- 					"defaultValue": "[parameters('enabledForDeployment')]"
- 				},
- 				"enabledForTemplateDeployment": {
- 					"type": "Bool",
- 					"defaultValue": "[parameters('enabledForTemplateDeployment')]"
- 				},
- 				"enabledForDiskEncryption": {
- 					"type": "Bool",
- 					"defaultValue": "[parameters('enabledForDiskEncryption')]"
- 				},
- 				"enableRbacAuthorization": {
- 					"type": "Bool",
- 					"defaultValue": "[parameters('enableRbacAuthorization')]"
- 				},
- 				"enableSoftDelete": {
- 					"type": "Bool",
- 					"defaultValue": "[parameters('enableSoftDelete')]"
- 				},
- 				"softDeleteRetentionInDays": {
- 					"type": "Int",
- 					"defaultValue": "[parameters('softDeleteRetentionInDays')]"
- 				},
- 				"networkAcls": {
- 					"type": "Object",
- 					"defaultValue": "[parameters('networkAcls')]"
- 				}
- 			}
+ 			"parameters": { 			}
  		}
  	}]
  }
