@@ -69,7 +69,6 @@
 			"name": "[parameters('keyName')]",
 			"type": "Microsoft.KeyVault/vaults/keys",
 			"apiVersion": "2019-09-01",
-			"tags": {},
 			"properties": {
 				"attributes": {
 					"enabled": true
