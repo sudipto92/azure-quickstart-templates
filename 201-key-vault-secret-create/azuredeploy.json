@@ -11,6 +11,9 @@
         "sku": {
             "type": "String"
         },
+		"keyName": {
+            "type": "String"
+        },
         "accessPolicies": {
             "type": "Array"
         },
@@ -47,9 +50,6 @@
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "dependsOn": [],
-            "tags": {
-                "Name": "KeyVaultNew2222"
-            },
             "properties": {
                 "enabledForDeployment": "[parameters('enabledForDeployment')]",
                 "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
@@ -65,7 +65,22 @@
                 "softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
                 "networkAcls": "[parameters('networkAcls')]"
             }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/keys",
+            "apiVersion": "2019-09-01",
+            "name": "[concat(parameters('name'), '/', parameters('keyName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                }
+            }
         }
     ],
     "outputs": {}
 }
+
