@@ -11,7 +11,7 @@
 		"sku": {
 			"type": "String"
 		},
-		"keyName": {
+		"keyName_value": {
 			"type": "String"
 		},
 		"accessPolicies": {
@@ -66,7 +66,7 @@
 			}
 		},
 		{
-			"name": "[parameters('keyName')]",
+			"name": "[parameters('keyName_value')]",
 			"type": "Microsoft.KeyVault/vaults/keys",
 			"apiVersion": "2019-09-01",
 			"properties": {
