@@ -81,7 +81,7 @@
 					{
 						"type": "Microsoft.KeyVault/vaults",
 						"apiVersion": "2018-02-14",
-						"name": "[parameters('name')]",
+						"name": "[parameters('keyvault_name')]",
 						"location": "[parameters('location')]",
 						"dependsOn": [],
 						"properties": {
@@ -103,9 +103,9 @@
 					{
 						"type": "Microsoft.KeyVault/vaults/keys",
 						"apiVersion": "2019-09-01",
-						"name": "[concat(parameters('name'), '/', parameters('keyName'))]",
+						"name": "[concat(parameters('keyvault_name'), '/', parameters('keyName'))]",
 						"dependsOn": [
-							"[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]"
+							"[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
 						],
 						"properties": {
 							"attributes": {
@@ -121,7 +121,7 @@
 				]
 			},
 			"parameters": {
-				"name": {
+				"keyvault_name": {
 					"type": "String",
 					"defaultValue": "[parameters('name')]"
 				},
