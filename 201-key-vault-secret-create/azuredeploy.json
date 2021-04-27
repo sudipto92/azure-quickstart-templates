@@ -122,43 +122,56 @@
 			},
 			"parameters": {
 				"name": {
-					"type": "String"
+					"type": "String",
+					"defaultValue": "[parameters('name')]"
 				},
 				"location": {
-					"type": "String"
+					"type": "String",
+					"defaultValue": "[parameters('location')]"
 				},
 				"sku": {
-					"type": "String"
+					"type": "String",
+					"defaultValue": "[parameters('sku')]"
 				},
 				"keyName": {
-					"type": "String"
+					"type": "String",
+					"defaultValue": "[parameters('keyName')]"
 				},
 				"accessPolicies": {
-					"type": "Array"
+					"type": "Array",
+					"defaultValue": "[parameters('accessPolicies')]"
 				},
 				"tenant": {
-					"type": "String"
+					"type": "String",
+					"defaultValue": "[parameters('tenant')]"
 				},
 				"enabledForDeployment": {
-					"type": "Bool"
+					"type": "Bool",
+					"defaultValue": "[parameters('enabledForDeployment')]"
 				},
 				"enabledForTemplateDeployment": {
-					"type": "Bool"
+					"type": "Bool",
+					"defaultValue": "[parameters('enabledForTemplateDeployment')]"
 				},
 				"enabledForDiskEncryption": {
-					"type": "Bool"
+					"type": "Bool",
+					"defaultValue": "[parameters('enabledForDiskEncryption')]"
 				},
 				"enableRbacAuthorization": {
-					"type": "Bool"
+					"type": "Bool",
+					"defaultValue": "[parameters('enableRbacAuthorization')]"
 				},
 				"enableSoftDelete": {
-					"type": "Bool"
+					"type": "Bool",
+					"defaultValue": "[parameters('enableSoftDelete')]"
 				},
 				"softDeleteRetentionInDays": {
-					"type": "Int"
+					"type": "Int",
+					"defaultValue": "[parameters('softDeleteRetentionInDays')]"
 				},
 				"networkAcls": {
-					"type": "Object"
+					"type": "Object",
+					"defaultValue": "[parameters('networkAcls')]"
 				}
 			}
 		}
