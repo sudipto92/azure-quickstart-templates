@@ -387,9 +387,6 @@
  			"name": "nestedTemplate1",
  			"resourceGroup": "[parameters('resourceGroup')]",
  			"subscriptionId": "[parameters('subscriptionID')]",
- 			"dependsOn": [
- 				"[resourceId('Microsoft.Resources/deployments', 'nestedTemplate')]"
- 			],
  			"properties": {
  				"mode": "Incremental",
  				"template": {
