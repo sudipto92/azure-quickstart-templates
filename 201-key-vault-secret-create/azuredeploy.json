@@ -127,23 +127,14 @@
 						"location": "[parameters('location')]",
 						"name": "[parameters('resourceGroup')]"
 					},
-					{
- 						"type": "Microsoft.Storage/storageAccounts",
- 						"apiVersion": "2019-06-01",
- 						"name": "[parameters('storageName')]",
- 						"location": "[parameters('location')]",
- 						"sku": {
- 							"name": "Standard_LRS"
- 						},
- 						"kind": "Storage",
- 						"properties": {}
- 					},
  					{
  						"type": "Microsoft.KeyVault/vaults",
  						"apiVersion": "2018-02-14",
  						"name": "[parameters('keyvault_name')]",
  						"location": "[parameters('location')]",
- 						"dependsOn": [],
+ 						"dependsOn": [
+ 							"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
+ 						],
  						"properties": {
  							"enabledForDeployment": "[parameters('enabledForDeployment')]",
  							"enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
@@ -177,6 +168,17 @@
  							],
  							"keySize": "2048"
  						}
+ 					},
+										{
+ 						"type": "Microsoft.Storage/storageAccounts",
+ 						"apiVersion": "2019-06-01",
+ 						"name": "[parameters('storageName')]",
+ 						"location": "[parameters('location')]",
+ 						"sku": {
+ 							"name": "Standard_LRS"
+ 						},
+ 						"kind": "Storage",
+ 						"properties": {}
  					}
  				]
  			},
