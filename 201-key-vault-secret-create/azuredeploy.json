@@ -70,7 +70,7 @@
 			"type": "Microsoft.KeyVault/vaults/keys",
 			"name": "[parameters('keyName')]",
 			"dependsOn": [
-    			        "[concat('Microsoft.KeyVault/vaults/', parameters('name'))]"
+				"[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]"
    			],
 			"properties": {
 				"attributes": {
