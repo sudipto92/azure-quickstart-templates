@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
@@ -19,11 +14,9 @@ variables:
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    deploymentScope: 'Resource Group'
+    deploymentScope: 'Subscription'
     azureResourceManagerConnection: 'ARM Template'
-    subscriptionId: ${{ variables.subscriptionID_var }}
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: ${{ variables.resouceGroup_var }}
+    subscriptionId: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
     location: 'South India'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
