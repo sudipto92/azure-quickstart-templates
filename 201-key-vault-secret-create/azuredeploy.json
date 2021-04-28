@@ -14,44 +14,8 @@
  			"type": "string",
  			"defaultValue": "test3322storage12345"
  		},
- 		"keyvault_name": {
- 			"type": "String"
- 		},
  		"location": {
  			"type": "String"
- 		},
- 		"sku": {
- 			"type": "String"
- 		},
- 		"keyName": {
- 			"type": "String"
- 		},
- 		"accessPolicies": {
- 			"type": "Array"
- 		},
- 		"tenant": {
- 			"type": "String"
- 		},
- 		"enabledForDeployment": {
- 			"type": "Bool"
- 		},
- 		"enabledForTemplateDeployment": {
- 			"type": "Bool"
- 		},
- 		"enabledForDiskEncryption": {
- 			"type": "Bool"
- 		},
- 		"enableRbacAuthorization": {
- 			"type": "Bool"
- 		},
- 		"enableSoftDelete": {
- 			"type": "Bool"
- 		},
- 		"softDeleteRetentionInDays": {
- 			"type": "Int"
- 		},
- 		"networkAcls": {
- 			"type": "Object"
  		}
  	},
  	"resources": [{
