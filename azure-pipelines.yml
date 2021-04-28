@@ -66,6 +66,6 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json'
     #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-acrName acrdemo'
+    overrideParameters: '-acrName acrdemo5645'
     deploymentMode: 'Incremental'
   displayName: 'Creating ACR'
