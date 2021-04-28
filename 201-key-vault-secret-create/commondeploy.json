@@ -5,9 +5,6 @@
     "siteName": {
       "type": "string",
       "defaultValue": "abc"
-      "metadata": {
-        "description": "The name of the function app that you wish to create."
-      }
     },
     "dockerImageName": {
       "type": "string",
