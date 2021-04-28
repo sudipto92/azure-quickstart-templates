@@ -19,7 +19,7 @@ steps:
     subscriptionId: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
     location: 'South India'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
+    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/commondeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
     overrideParameters: '-storageName test3322storage12345 -location eastus -acrName acrdemo5645 -_artifactsLocation https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/'
     deploymentMode: 'Incremental'
