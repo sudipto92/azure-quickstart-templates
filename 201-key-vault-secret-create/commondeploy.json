@@ -6,7 +6,7 @@
 			"type": "string",
 			"defaultValue": "abc12345"
 		},
-		"resourceGroup": {
+		"resource_Group": {
 			"type": "string",
 			"defaultValue": "devopsinit"
 		},
@@ -38,15 +38,15 @@
 			"type": "Microsoft.Resources/resourceGroups",
 			"apiVersion": "2018-05-01",
 			"location": "eastus",
-			"name": "[parameters('resourceGroup')]"
+			"name": "[parameters('resource_Group')]"
 		},
 		{
 			"apiVersion": "2017-05-10",
 			"name": "linkedAcrTemplateACR",
 			"type": "Microsoft.Resources/deployments",
-			
+			"resourceGroup": "[parameters('resource_Group')]",
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
+				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
 			],
 			"properties": {
 				"mode": "Incremental",
@@ -77,9 +77,9 @@
 			"apiVersion": "2017-05-10",
 			"name": "linkedAcrTemplateKEY",
 			"type": "Microsoft.Resources/deployments",
-			
+			"resourceGroup": "[parameters('resource_Group')]"
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
+				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
 			],
 			"properties": {
 				"mode": "Incremental",
