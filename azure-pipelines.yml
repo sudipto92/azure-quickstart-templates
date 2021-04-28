@@ -6,7 +6,7 @@ pool:
 
 variables:
 - name: resouceGroup_var
-  value: 'Devops_init' 
+  value: 'devops_init' 
 - name: subscriptionID_var
   value: '68ef03fa-8f28-44b6-a1dd-13113c3eb580'
 - name: keyVault_name
@@ -21,7 +21,7 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/commondeploy.json'
     #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    #overrideParameters: '-storageAccount test3322storage12345 -location eastus -acrName acrdemo5645 -keyvault_name testing5555 -keyName keyVaultK'
+    overrideParameters: '-acrName acrdemo5645 -keyvault_name testing5555 -keyName keyVaultK'
     deploymentMode: 'Incremental'
   displayName: 'Running ARM Template'
-    
+    #-storageAccount test3322storage12345
