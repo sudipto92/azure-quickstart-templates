@@ -21,7 +21,7 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/azuredeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-keyvault_name testing55455 -keyName keyVaultK'
+    overrideParameters: '-storageName test3322storage12345'
     deploymentMode: 'Incremental'
   displayName: 'Creating Resource Group and Storage Account'
     
@@ -39,3 +39,18 @@ steps:
 #    overrideParameters: '-keyvault_name testing5555 -keyName keyVaultK'
 #    deploymentMode: 'Incremental'
 #  displayName: 'Creating Keyvault and Adding key'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'ARM Template'
+    subscriptionId: ${{ variables.subscriptionID_var }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ${{ variables.resouceGroup_var }}
+    location: 'South India'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/blob-azuredeploy.json'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
+    overrideParameters: '-storageName test3322storage12345'
+    deploymentMode: 'Incremental'
+  displayName: 'Creating blobs in storageaccount'
