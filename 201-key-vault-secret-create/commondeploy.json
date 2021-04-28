@@ -10,7 +10,7 @@
  			"type": "string",
  			"defaultValue": "68ef03fa-8f28-44b6-a1dd-13113c3eb580"
  		},
- 		"storageName": {
+ 		"storageAccount": {
  			"type": "string",
  			"defaultValue": "test3322storage12345"
  		},
