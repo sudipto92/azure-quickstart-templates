@@ -21,7 +21,7 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/commondeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-storageName test3322storage12345 -location eastus -acrName acrdemo5645 -_artifactsLocation https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/'
+    overrideParameters: '-storageName test3322storage12345 -location eastus -acrName acrdemo5645 -keyvault_name testing5555 -keyName keyVaultK -_artifactsLocation https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/'
     deploymentMode: 'Incremental'
   displayName: 'Running ARM Template'
     
