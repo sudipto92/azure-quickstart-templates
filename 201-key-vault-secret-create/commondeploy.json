@@ -1,60 +1,62 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "siteName": {
-      "type": "string",
-      "defaultValue": "abc"
-    },
-    "dockerImageName": {
-      "type": "string",
-      "defaultValue": "nginx:latest"
-    },
-    "_artifactsLocation": {
-        "type": "string",
-        "metadata": {
-            "description": "The base URI where artifacts required by this template are located including a trailing '/'"
-        },
-        "defaultValue": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/"
-    },
-    "_artifactsLocationSasToken": {
-        "type": "securestring",
-        "metadata": {
-            "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
-        },
-        "defaultValue": ""
-    }
-  },
-  "variables": {
-    "acrName": "[concat(parameters('siteName'), 'acr')]"
-  },
-  "resources": [   
-   			{
- 			  "type": "Microsoft.Resources/resourceGroups",
- 			  "apiVersion": "2018-05-01",
- 			  "location": "eastus",
- 			  "name": "Devops_init"
-			  },			
-     {
-      "apiVersion": "2017-05-10",
-      "name": "linkedAcrTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "Devops_init",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/tomconte/acrwebapp/master/acr.json",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "acrName": {
-            "value": "[variables('acrName')]"
-          },
-          "acrAdminUserEnabled": {
-            "value": true
-          }
-        }
-      }
-    }
-  ]
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"siteName": {
+			"type": "string",
+			"defaultValue": "abc"
+		},
+		"resourceGroup": {
+			"type": "string",
+			"defaultValue": "Devops_init"
+		},
+		"_artifactsLocation": {
+			"type": "string",
+			"metadata": {
+				"description": "The base URI where artifacts required by this template are located including a trailing '/'"
+			},
+			"defaultValue": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/"
+		},
+		"_artifactsLocationSasToken": {
+			"type": "securestring",
+			"metadata": {
+				"description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
+			},
+			"defaultValue": ""
+		}
+	},
+	"variables": {
+		"acrName": "[concat(parameters('siteName'), 'acr')]"
+	},
+	"resources": [{
+			"type": "Microsoft.Resources/resourceGroups",
+			"apiVersion": "2018-05-01",
+			"location": "eastus",
+			"name": "parameters('resourceGroup')"
+		},
+		{
+			"apiVersion": "2017-05-10",
+			"name": "linkedAcrTemplate",
+			"type": "Microsoft.Resources/deployments",
+			"resourceGroup": "parameters('resourceGroup')",
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
+			],
+			"properties": {
+				"mode": "Incremental",
+				"templateLink": {
+					"uri": "https://raw.githubusercontent.com/tomconte/acrwebapp/master/acr.json",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"acrName": {
+						"value": "[variables('acrName')]"
+					},
+					"acrAdminUserEnabled": {
+						"value": true
+					}
+				}
+			}
+		}
+	]
 }
