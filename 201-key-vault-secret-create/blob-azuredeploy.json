@@ -36,7 +36,7 @@
 			"sku": {
 				"name": "Standard_LRS"
 			},
-			"kind": "Storage",
+			"kind": "BlobStorage",
 			"properties": {}
 		},
 		{
