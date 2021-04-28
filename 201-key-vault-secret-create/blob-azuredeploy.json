@@ -135,35 +135,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2021-01-01",
-            "name": "[concat(parameters('storageAccount'), '/default/', parameters('blob1'))]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccount'), 'default')]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccount'))]"
-            ],
-            "properties": {
-                "defaultEncryptionScope": "$account-encryption-key",
-                "denyEncryptionScopeOverride": false,
-                "publicAccess": "Blob"
-            }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-            "apiVersion": "2021-01-01",
-            "name": "[concat(parameters('storageAccount'), '/default/', parameters('blob2'))]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccount'), 'default')]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccount'))]"
-            ],
-            "properties": {
-                "defaultEncryptionScope": "$account-encryption-key",
-                "denyEncryptionScopeOverride": false,
-                "publicAccess": "Blob"
-            }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-            "apiVersion": "2021-01-01",
-            "name": "[concat(parameters('storageAccount'), '/default/', parameters('blob3'))]",
+            "name": "[concat(parameters('storageAccount'), '/default/logs')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccount'), 'default')]",
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccount'))]"
