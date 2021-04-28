@@ -1,0 +1,200 @@
+ {
+ 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ 	"contentVersion": "1.0.0.0",
+ 	"parameters": {
+ 		"resourceGroup": {
+ 			"type": "string",
+ 			"defaultValue": "Devops_init"
+ 		},
+ 		"subscriptionID": {
+ 			"type": "string",
+ 			"defaultValue": "68ef03fa-8f28-44b6-a1dd-13113c3eb580"
+ 		},
+ 		"storageName": {
+ 			"type": "string",
+ 			"defaultValue": "test3322storage12345"
+ 		},
+ 		"acrName": {
+ 			"type": "string",
+ 			"minLength": 5,
+ 			"maxLength": 50,
+ 			"metadata": {
+ 				"description": "Name of your Azure Container Registry"
+ 			}
+ 		},
+ 		"_artifactsLocation": {
+ 			"type": "string",
+ 			"metadata": {
+ 				"description": "The base URI where artifacts required by this template are located including a trailing '/'"
+ 			},
+ 			"defaultValue": "https://raw.githubusercontent.com/tomconte/acrwebapp/master/"
+ 		},
+ 		"keyvault_name": {
+ 			"type": "String"
+ 		},
+ 		"location": {
+ 			"type": "String"
+ 		},
+ 		"sku": {
+ 			"type": "String"
+ 		},
+ 		"keyName": {
+ 			"type": "String"
+ 		},
+ 		"accessPolicies": {
+ 			"type": "Array"
+ 		},
+ 		"tenant": {
+ 			"type": "String"
+ 		},
+ 		"enabledForDeployment": {
+ 			"type": "Bool"
+ 		},
+ 		"enabledForTemplateDeployment": {
+ 			"type": "Bool"
+ 		},
+ 		"enabledForDiskEncryption": {
+ 			"type": "Bool"
+ 		},
+ 		"enableRbacAuthorization": {
+ 			"type": "Bool"
+ 		},
+ 		"enableSoftDelete": {
+ 			"type": "Bool"
+ 		},
+ 		"softDeleteRetentionInDays": {
+ 			"type": "Int"
+ 		},
+ 		"networkAcls": {
+ 			"type": "Object"
+ 		}
+ 	},
+ 	"variables": {},
+ 	"resources": [{
+ 			"type": "Microsoft.Storage/storageAccounts",
+ 			"apiVersion": "2018-02-01",
+ 			"name": "[parameters('storageAccount')]",
+ 			"location": "[resourceGroup().location]",
+ 			"tags": {
+ 				"displayName": "[parameters('storageAccount')]"
+ 			},
+ 			"sku": {
+ 				"name": "Standard_LRS"
+ 			},
+ 			"kind": "StorageV2",
+ 			"properties": {},
+ 			"resources": [{
+ 					"type": "blobServices/containers",
+ 					"apiVersion": "2018-03-01-preview",
+ 					"name": "[concat('default/', parameters('blob1'))]",
+ 					"dependsOn": [
+ 						"[parameters('storageAccount')]"
+ 					],
+ 					"properties": {
+ 						"publicAccess": "Blob"
+ 					}
+ 				},
+ 				{
+ 					"type": "blobServices/containers",
+ 					"apiVersion": "2018-03-01-preview",
+ 					"name": "[concat('default/', parameters('blob2'))]",
+ 					"dependsOn": [
+ 						"[parameters('storageAccount')]"
+ 					],
+ 					"properties": {
+ 						"publicAccess": "Blob"
+ 					}
+ 				},
+ 				{
+ 					"type": "blobServices/containers",
+ 					"apiVersion": "2018-03-01-preview",
+ 					"name": "[concat('default/', parameters('blob3'))]",
+ 					"dependsOn": [
+ 						"[parameters('storageAccount')]"
+ 					],
+ 					"properties": {
+ 						"publicAccess": "Blob"
+ 					}
+ 				}
+ 			]
+ 		},
+ 		{
+ 			"apiVersion": "2017-05-10",
+ 			"name": "linkedAcrTemplate",
+ 			"type": "Microsoft.Resources/deployments",
+ 			"properties": {
+ 				"mode": "Incremental",
+ 				"templateLink": {
+ 					"uri": "[uri(parameters('_artifactsLocation'), concat('acr.json'))]",
+ 					"contentVersion": "1.0.0.0"
+ 				},
+ 				"parameters": {
+ 					"acrName": {
+ 						"value": "[parameters('acrName')]"
+ 					},
+ 					"acrAdminUserEnabled": {
+ 						"value": true
+ 					}
+ 				}
+ 			}
+ 		},
+ 		{
+ 			"apiVersion": "2017-05-10",
+ 			"name": "linkedAcrTemplate1",
+ 			"type": "Microsoft.Resources/deployments",
+ 			"properties": {
+ 				"mode": "Incremental",
+ 				"templateLink": {
+ 					"uri": "[uri(parameters('_artifactsLocation'), concat('kv-azuredeploy.json'))]",
+ 					"contentVersion": "1.0.0.0"
+ 				},
+ 				"parameters": {
+ 					"acrName": {
+ 						"value": "[parameters('acrName')]"
+ 					},
+ 					"keyvault_name": {
+ 						"value": "[parameters('keyvault_name')]"
+ 					},
+ 					"location": {
+ 						"value": "[parameters('location')]"
+ 					},
+ 					"sku": {
+ 						"value": "[parameters('sku')]"
+ 					},
+ 					"keyName": {
+ 						"value": "[parameters('keyName')]"
+ 					},
+ 					"accessPolicies": {
+ 						"value": "[parameters('accessPolicies')]"
+ 					},
+ 					"tenant": {
+ 						"value": "[parameters('tenant')]"
+ 					},
+ 					"enabledForDeployment": {
+ 						"value": "[parameters('enabledForDeployment')]"
+ 					},
+ 					"enabledForTemplateDeployment": {
+ 						"value": "[parameters('enabledForTemplateDeployment')]"
+ 					},
+ 					"enabledForDiskEncryption": {
+ 						"value": "[parameters('enabledForDiskEncryption')]"
+ 					},
+ 					"enableRbacAuthorization": {
+ 						"value": "[parameters('enableRbacAuthorization')]"
+ 					},
+ 					"enableSoftDelete": {
+ 						"value": "[parameters('enableSoftDelete')]"
+ 					},
+ 					"softDeleteRetentionInDays": {
+ 						"value": "[parameters('softDeleteRetentionInDays')]"
+ 					},
+ 					"networkAcls": {
+ 						"value": "[parameters('networkAcls')]"
+ 					}
+ 				}
+ 			}
+ 		}
+
+
+ 	]
+ }
