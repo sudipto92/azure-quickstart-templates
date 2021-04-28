@@ -23,6 +23,7 @@ steps:
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
     overrideParameters: '-keyvault_name testing55455 -keyName keyVaultK'
     deploymentMode: 'Incremental'
+  displayName: 'Creating Resource Group and Storage Account'
     
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
@@ -37,3 +38,4 @@ steps:
     csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
     overrideParameters: '-keyvault_name testing5555 -keyName keyVaultK'
     deploymentMode: 'Incremental'
+  displayName: 'Creating Keyvault and Adding key'
