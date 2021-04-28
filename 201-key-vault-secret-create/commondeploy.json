@@ -32,13 +32,13 @@
 			"type": "Microsoft.Resources/resourceGroups",
 			"apiVersion": "2018-05-01",
 			"location": "eastus",
-			"name": "parameters('resourceGroup')"
+			"name": "[parameters('resourceGroup')]"
 		},
 		{
 			"apiVersion": "2017-05-10",
 			"name": "linkedAcrTemplate",
 			"type": "Microsoft.Resources/deployments",
-			"resourceGroup": "parameters('resourceGroup')",
+			"resourceGroup": "[parameters('resourceGroup')]",
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
 			],
