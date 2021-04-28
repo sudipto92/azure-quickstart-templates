@@ -60,7 +60,7 @@
 					"[parameters('storageAccount')]"
 				],
 				"properties": {
-					"publicAccess": "None"
+					"publicAccess": "Container"
 				}
 			},
 			{
@@ -71,7 +71,7 @@
 					"[parameters('storageAccount')]"
 				],
 				"properties": {
-					"publicAccess": "None"
+					"publicAccess": "Container"
 				}
 			}
 		]
