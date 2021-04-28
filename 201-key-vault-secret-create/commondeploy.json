@@ -52,7 +52,7 @@
 				"mode": "Incremental",
 				"templateLink": {
 					"uri": "['https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json', 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/kv-azuredeploy.json']",
-					"contentVersion ": "1.0 .0 .0 "
+					"contentVersion ": "1.0 .0 .0"
 				},
 				"parameters": {
 					"acrName": {
