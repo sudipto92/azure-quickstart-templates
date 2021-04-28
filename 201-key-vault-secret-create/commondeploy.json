@@ -52,7 +52,7 @@
 				"mode": "Incremental",
 				"templateLink": {
 					"uri": "['https://raw.githubusercontent.com/tomconte/acrwebapp/master/acr.json',
-					        'https://raw.githubusercontent.com/tomconte/acrwebapp/master/kv-azuredeploy.json'",
+					        'https://raw.githubusercontent.com/tomconte/acrwebapp/master/kv-azuredeploy.json']",
 					"contentVersion": "1.0.0.0"
 				},
 				"parameters": {
