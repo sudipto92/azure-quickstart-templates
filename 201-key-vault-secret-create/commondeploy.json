@@ -46,7 +46,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'), 'acr.json')]",
+          "uri": "['https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json']",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
