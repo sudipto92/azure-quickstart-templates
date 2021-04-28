@@ -8,7 +8,7 @@
 		},
 		"resourceGroup": {
 			"type": "string",
-			"defaultValue": "Devops_init"
+			"defaultValue": "devopsinit"
 		},
 		"_artifactsLocation": {
 			"type": "string",
