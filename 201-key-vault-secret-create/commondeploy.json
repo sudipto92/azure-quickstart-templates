@@ -149,52 +149,8 @@
  					"contentVersion": "1.0.0.0"
  				},
  				"parameters": {
- 					"acrName": {
- 						"value": "[parameters('acrName')]"
- 					},
- 					"keyvault_name": {
- 						"value": "[parameters('keyvault_name')]"
- 					},
- 					"location": {
- 						"value": "[parameters('location')]"
- 					},
- 					"sku": {
- 						"value": "[parameters('sku')]"
- 					},
- 					"keyName": {
- 						"value": "[parameters('keyName')]"
- 					},
- 					"accessPolicies": {
- 						"value": "[parameters('accessPolicies')]"
- 					},
- 					"tenant": {
- 						"value": "[parameters('tenant')]"
- 					},
- 					"enabledForDeployment": {
- 						"value": "[parameters('enabledForDeployment')]"
- 					},
- 					"enabledForTemplateDeployment": {
- 						"value": "[parameters('enabledForTemplateDeployment')]"
- 					},
- 					"enabledForDiskEncryption": {
- 						"value": "[parameters('enabledForDiskEncryption')]"
- 					},
- 					"enableRbacAuthorization": {
- 						"value": "[parameters('enableRbacAuthorization')]"
- 					},
- 					"enableSoftDelete": {
- 						"value": "[parameters('enableSoftDelete')]"
- 					},
- 					"softDeleteRetentionInDays": {
- 						"value": "[parameters('softDeleteRetentionInDays')]"
- 					},
- 					"networkAcls": {
- 						"value": "[parameters('networkAcls')]"
- 					}
  				}
  			}
  		}
-
-
  	]
  }
