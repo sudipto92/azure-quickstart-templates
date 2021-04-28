@@ -51,6 +51,6 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/blob-azuredeploy.json'
     #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-storageName test3322storage12345 -location eastus'
+    overrideParameters: '-storageName test3322storage12345'
     deploymentMode: 'Incremental'
   displayName: 'Creating blobs in storageaccount'
