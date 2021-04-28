@@ -68,4 +68,4 @@ steps:
     #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
     overrideParameters: '-acrName acrdemo'
     deploymentMode: 'Incremental'
-  displayName: 'Creating blobs in storage account'
+  displayName: 'Creating ACR'
