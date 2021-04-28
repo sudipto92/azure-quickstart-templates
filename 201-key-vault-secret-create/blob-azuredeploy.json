@@ -25,7 +25,7 @@
 		"location": {
 			"type": "String",
 			"defaultvalue": "eastus"
-      		}
+		}
 	},
 	"variables": {},
 	"resources": [{
@@ -39,6 +39,33 @@
 			"kind": "BlobStorage",
 			"properties": {}
 		},
+		{
+			"type": "Microsoft.Storage/storageAccounts/queueServices",
+			"apiVersion": "2021-01-01",
+			"name": "[concat(parameters('storageAccount'), '/default')]",
+			"dependsOn": [
+				"[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccount'))]"
+			],
+			"properties": {
+				"cors": {
+					"corsRules": []
+				}
+			}
+		},
+		{
+			"type": "Microsoft.Storage/storageAccounts/tableServices",
+			"apiVersion": "2021-01-01",
+			"name": "[concat(parameters('storageAccount'), '/default')]",
+			"dependsOn": [
+				"[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccount'))]"
+			],
+			"properties": {
+				"cors": {
+					"corsRules": []
+				}
+			}
+		},
+
 		{
 			"type": "Microsoft.Storage/storageAccounts/blobServices/containers",
 			"apiVersion": "2021-01-01",
