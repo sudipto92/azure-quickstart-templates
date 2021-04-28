@@ -8,11 +8,11 @@
 		},
 		"blob2": {
 			"type": "String",
-			"defaultValue": "POC"
+			"defaultValue": "poc"
 		},
 		"blob3": {
 			"type": "String",
-			"defaultValue": "MVP"
+			"defaultValue": "mvp"
 		},
 		"resourceGroup": {
 			"type": "String",
