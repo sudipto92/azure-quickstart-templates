@@ -165,48 +165,6 @@
  				},
  				"parameters": {}
  			}
- 		},
- 		{
- 			"type": "Microsoft.Resources/deployments",
- 			"apiVersion": "2019-10-01",
- 			"name": "nestedTemplate1",
- 			"resourceGroup": "[parameters('resourceGroup')]",
- 			"subscriptionId": "[parameters('subscriptionID')]",
- 			"properties": {
- 				"mode": "Incremental",
- 				"template": {
- 					"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
- 					"contentVersion": "1.0.0.0",
- 					"parameters": {
- 						"keyvault_name": {
- 							"type": "String",
- 							"defaultValue": "[parameters('keyvault_name')]"
- 						},
- 						"keyName": {
- 							"type": "String",
- 							"defaultValue": "[parameters('keyName')]"
- 						}
- 					},
- 					"variables": {},
- 					"resources": [{
- 						"type": "Microsoft.KeyVault/vaults/keys",
- 						"apiVersion": "2019-09-01",
- 						"name": "[concat(parameters('keyvault_name'), '/', parameters('keyName'))]",
- 						"properties": {
- 							"attributes": {
- 								"enabled": true
- 							},
- 							"kty": "RSA",
- 							"keyOps": [
- 								"encrypt"
- 							],
- 							"keySize": "2048"
- 						}
- 					}]
- 				},
- 				"parameters": {}
- 			}
  		}
-
  	]
  }
