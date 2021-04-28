@@ -40,6 +40,21 @@ steps:
 #    deploymentMode: 'Incremental'
 #  displayName: 'Creating Keyvault and Adding key'
 
+#- task: AzureResourceManagerTemplateDeployment@3
+#  inputs:
+#    deploymentScope: 'Resource Group'
+#    azureResourceManagerConnection: 'ARM Template'
+#    subscriptionId: ${{ variables.subscriptionID_var }}
+#    action: 'Create Or Update Resource Group'
+#    resourceGroupName: ${{ variables.resouceGroup_var }}
+#    location: 'South India'
+#    templateLocation: 'URL of the file'
+#    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/blob-azuredeploy.json'
+#    #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
+#    overrideParameters: '-storageAccount test3322storage12345'
+#    deploymentMode: 'Incremental'
+#  displayName: 'Creating blobs in storage account'
+
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -49,8 +64,8 @@ steps:
     resourceGroupName: ${{ variables.resouceGroup_var }}
     location: 'South India'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/blob-azuredeploy.json'
+    csmFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json'
     #csmParametersFileLink: 'https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/parameters.json'
-    overrideParameters: '-storageAccount test3322storage12345'
+    overrideParameters: '-acrName acrdemo'
     deploymentMode: 'Incremental'
   displayName: 'Creating blobs in storage account'
