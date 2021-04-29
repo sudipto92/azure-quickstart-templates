@@ -77,7 +77,7 @@
 			"apiVersion": "2017-05-10",
 			"name": "linkedAcrTemplateKEY",
 			"type": "Microsoft.Resources/deployments",
-			"resourceGroup": "[parameters('resource_Group')]"
+			"resourceGroup": "[parameters('resource_Group')]",
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
 			],
