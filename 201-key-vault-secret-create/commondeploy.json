@@ -41,10 +41,9 @@
 			"name": "[parameters('resource_Group')]"
 		},
 		{
-			"apiVersion": "2017-05-10",
-			"name": "linkedAcrTemplateACR",
 			"type": "Microsoft.Resources/deployments",
-			"resourceGroup": "[parameters('resource_Group')]",
+			"apiVersion": "2017-05-10",
+			"name": "linkedAcrTemplate",			
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
 			],
