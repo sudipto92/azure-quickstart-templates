@@ -1,0 +1,203 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "acrName": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 50,
+      "metadata": {
+        "description": "Name of your Azure Container Registry"
+      }
+    },
+    "acrAdminUserEnabled": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable admin user that have push / pull permission to the registry."
+      }
+    },
+    "acrSku": {
+      "type": "string",
+      "metadata": {
+        "description": "Tier of your Azure Container Registry."
+      },
+      "defaultValue": "Basic",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ]
+    },
+    		"keyvault_name": {
+			"type": "String"
+		},
+		"location": {
+			"type": "String"
+		},
+		"sku": {
+			"type": "String",
+			"defaultValue": "Standard"
+		},
+		"keyName": {
+			"type": "String"
+		},
+		"accessPolicies": {
+			"type": "Array",
+			"defaultValue": [{
+				"objectId": "f3240413-db7d-45dd-8b12-b466425983ec",
+				"tenantId": "3a904252-8b95-4c7c-b37b-0846100d0308",
+				"permissions": {
+					"keys": [
+						"Get",
+						"List",
+						"Update",
+						"Create",
+						"Import",
+						"Delete",
+						"Recover",
+						"Backup",
+						"Restore"
+					],
+					"secrets": [
+						"Get",
+						"List",
+						"Set",
+						"Delete",
+						"Recover",
+						"Backup",
+						"Restore"
+					],
+					"certificates": [
+						"Get",
+						"List",
+						"Update",
+						"Create",
+						"Import",
+						"Delete",
+						"Recover",
+						"Backup",
+						"Restore",
+						"ManageContacts",
+						"ManageIssuers",
+						"GetIssuers",
+						"ListIssuers",
+						"SetIssuers",
+						"DeleteIssuers"
+					]
+				},
+				"applicationId": ""
+			}]
+		},
+		"tenant": {
+			"type": "String",
+			"defaultValue": "3a904252-8b95-4c7c-b37b-0846100d0308"
+		},
+		"enabledForDeployment": {
+			"type": "Bool",
+			"defaultValue": false
+		},
+		"enabledForTemplateDeployment": {
+			"type": "Bool",
+			"defaultValue": false
+		},
+		"enabledForDiskEncryption": {
+			"type": "Bool",
+			"defaultValue": false
+		},
+		"enableRbacAuthorization": {
+			"type": "Bool",
+			"defaultValue": false
+		},
+		"enableSoftDelete": {
+			"type": "Bool",
+			"defaultValue": false
+		},
+		"softDeleteRetentionInDays": {
+			"type": "Int",
+			"defaultValue": 90
+		},
+		"networkAcls": {
+			"type": "Object",
+			"defaultValue": {
+				"defaultAction": "allow",
+				"bypass": "AzureServices",
+				"ipRules": [],
+				"virtualNetworkRules": []
+			}
+		}
+  },
+  "resources": [
+    {
+      "name": "[parameters('acrName')]",
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2017-10-01",
+      "location": "[resourceGroup().location]",
+      "comments": "Container registry for storing docker images",
+      "tags": {
+        "displayName": "Container Registry",
+        "container.registry": "[parameters('acrName')]"
+      },
+      "sku": {
+        "name": "[parameters('acrSku')]",
+        "tier": "[parameters('acrSku')]"
+      },
+      "properties": {
+        "adminUserEnabled": "[parameters('acrAdminUserEnabled')]"
+      }
+    },{
+			"type": "Microsoft.KeyVault/vaults",
+			"apiVersion": "2018-02-14",
+			"name": "[parameters('keyvault_name')]",
+			"location": "[parameters('location')]",
+			"dependsOn": [],
+			"properties": {
+				"enabledForDeployment": "[parameters('enabledForDeployment')]",
+				"enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+				"enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+				"enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
+				"accessPolicies": "[parameters('accessPolicies')]",
+				"tenantId": "[parameters('tenant')]",
+				"sku": {
+					"name": "[parameters('sku')]",
+					"family": "A"
+				},
+				"enableSoftDelete": "[parameters('enableSoftDelete')]",
+				"softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
+				"networkAcls": "[parameters('networkAcls')]"
+			}
+		},
+		{
+			"type": "Microsoft.KeyVault/vaults/keys",
+			"apiVersion": "2019-09-01",
+			"name": "[concat(parameters('keyvault_name'), '/', parameters('keyName'))]",
+			"dependsOn": [
+				"[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+			],
+			"properties": {
+				"attributes": {
+					"enabled": true
+				},
+				"kty": "RSA",
+				"keyOps": [
+					"encrypt"
+				],
+				"keySize": "2048"
+			}
+		}
+  ],
+  "outputs": {
+    "acrLoginServer": {
+      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries',parameters('acrName')),'2017-10-01').loginServer]",
+      "type": "string"
+    },
+    "registryUsername": {
+      "value": "[parameters('acrName')]",
+      "type": "string"
+    },
+    "registryPassword": {
+      "value": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries',parameters('acrName')),'2017-10-01').passwords[0].value]",
+      "type": "string"
+    }
+  }
+}
