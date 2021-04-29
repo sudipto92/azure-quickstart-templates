@@ -51,40 +51,7 @@
 			"properties": {
 				"mode": "Incremental",
 				"templateLink": {
-					"uri": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json",
-					"contentVersion ": "1.0 .0 .0"
-				},
-				"parameters": {
-					"acrName": {
-						"value": "[variables('acrName')]"
-					},
-					"acrAdminUserEnabled": {
-						"value": true
-					},
-					"keyvault_name": {
-						"value": "[parameters('keyvault_name')]"
-					},
-					"location": {
-						"value": "[resourceGroup().location]"
-					},
-					"keyName": {
-						"value": "[parameters('keyName')]"
-					}
-				}
-			}
-		},
-		{
-			"apiVersion": "2017-05-10",
-			"name": "linkedAcrTemplateKEY",
-			"type": "Microsoft.Resources/deployments",
-			"resourceGroup": "[parameters('resource_Group')]",
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
-			],
-			"properties": {
-				"mode": "Incremental",
-				"templateLink": {
-					"uri": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/kv-azuredeploy.json",
+					"uri": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/combi.json",
 					"contentVersion ": "1.0 .0 .0"
 				},
 				"parameters": {
