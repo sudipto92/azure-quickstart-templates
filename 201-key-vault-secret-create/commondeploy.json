@@ -34,16 +34,13 @@
 	"variables": {
 		"acrName": "[concat(parameters('siteName'), 'acr')]"
 	},
-	"resources": [{
-			"type": "Microsoft.Resources/resourceGroups",
-			"apiVersion": "2018-05-01",
-			"location": "eastus",
-			"name": "[parameters('resource_Group')]"
-		},
+	"resources": [
+		
 		{
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2017-05-10",
-			"name": "linkedAcrTemplate",			
+			"name": "linkedAcrTemplate",	
+			"resourceGroup": "[parameters('resource_Group')]",
 			"properties": {
 				"mode": "Incremental",
 				"templateLink": {
