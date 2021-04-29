@@ -44,9 +44,6 @@
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2017-05-10",
 			"name": "linkedAcrTemplate",			
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resource_Group'))]"
-			],
 			"properties": {
 				"mode": "Incremental",
 				"templateLink": {
