@@ -40,8 +40,9 @@
 	},
 	"resources": [{
 		"apiVersion": "2017-05-10",
-		"name": "linkedAciContainerTemplate",
+		"name": "linkedAcrTemplate",
 		"type": "Microsoft.Resources/deployments",
+		"location": "[parameters('location')]",
 		"properties": {
 			"mode": "Incremental",
 			"templateLink": {
