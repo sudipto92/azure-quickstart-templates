@@ -29,7 +29,11 @@
 		},
 		"keyName": {
 			"type": "String"
-		}
+		},
+		"location": {
+			"type": "string",
+			"defaultValue": "eastus"
+		},
 	},
 	"variables": {
 		"acrName": "[concat(parameters('siteName'), 'acr')]"
@@ -52,7 +56,7 @@
 					"value": true
 				},
 				"location": {
-					"value": "[resourceGroup().location]"
+					"value": "[parameters('location')]"
 				}
 			}
 		}
