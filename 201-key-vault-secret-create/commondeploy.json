@@ -50,6 +50,9 @@
 				},
 				"acrAdminUserEnabled": {
 					"value": true
+				},
+				"location": {
+					"value": "[resourceGroup().location]"
 				}
 			}
 		}
