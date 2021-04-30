@@ -38,9 +38,6 @@
 		"apiVersion": "2017-05-10",
 		"name": "linkedAciContainerTemplate",
 		"type": "Microsoft.Resources/deployments",
-		"dependsOn": [
-			"[variables('roleNameGUID')]"
-		],
 		"properties": {
 			"mode": "Incremental",
 			"templateLink": {
