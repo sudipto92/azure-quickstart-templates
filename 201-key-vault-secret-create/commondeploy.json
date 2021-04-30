@@ -1,65 +1,113 @@
-{
-	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"siteName": {
-			"type": "string",
-			"defaultValue": "abc12345"
-		},
-		"resource_Group": {
-			"type": "string",
-			"defaultValue": "devopsinit"
-		},
-		"_artifactsLocation": {
-			"type": "string",
-			"metadata": {
-				"description": "The base URI where artifacts required by this template are located including a trailing '/'"
-			},
-			"defaultValue": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/"
-		},
-		"_artifactsLocationSasToken": {
-			"type": "securestring",
-			"metadata": {
-				"description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
-			},
-			"defaultValue": ""
-		},
-		"keyvault_name": {
-			"type": "String"
-		},
-		"keyName": {
-			"type": "String"
-		},
-		"location": {
-			"type": "string",
-			"defaultValue": "eastus"
-		},
-	},
-	"variables": {
-		"acrName": "[concat(parameters('siteName'), 'acr')]"
-	},
-	"resources": [{
-		"apiVersion": "2017-05-10",
-		"name": "linkedAcrTemplate",
-		"type": "Microsoft.Resources/deployments",
-		"location": "[parameters('location')]",
-		"properties": {
-			"mode": "Incremental",
-			"templateLink": {
-				"uri": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/acr.json",
-				"contentVersion": "1.0.0.0"
-			},
-			"parameters": {
-				"acrName": {
-					"value": "[variables('acrName')]"
-				},
-				"acrAdminUserEnabled": {
-					"value": true
-				},
-				"location": {
-					"value": "[parameters('location')]"
-				}
-			}
-		}
-	}]
-}
+ {
+ 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ 	"contentVersion": "1.0.0.0",
+ 	"parameters": {
+ 		"resourceGroup": {
+ 			"type": "string",
+ 			"defaultValue": "Devops_init"
+ 		},
+ 		"subscriptionID": {
+ 			"type": "string",
+ 			"defaultValue": "68ef03fa-8f28-44b6-a1dd-13113c3eb580"
+ 		},
+ 		"storageName": {
+ 			"type": "string",
+ 			"defaultValue": "test3322storage12345"
+ 		},
+ 		"blob1": {
+ 			"type": "String",
+ 			"defaultValue": "logs"
+ 		},
+ 		"blob2": {
+ 			"type": "String",
+ 			"defaultValue": "poc"
+ 		},
+ 		"blob3": {
+ 			"type": "String",
+ 			"defaultValue": "mvp"
+ 		},
+ 		"storageAccount": {
+ 			"type": "String",
+ 			"defaultValue": "test3322storage12345"
+ 		},
+ 		"location": {
+ 			"type": "String",
+ 			"defaultvalue": "eastus"
+ 		}
+ 	},
+ 	"resources": [{
+ 			"type": "Microsoft.Resources/resourceGroups",
+ 			"apiVersion": "2018-05-01",
+ 			"location": "[parameters('location')]",
+ 			"name": "[parameters('resourceGroup')]"
+ 		},
+ 		{
+ 			"type": "Microsoft.Resources/deployments",
+ 			"apiVersion": "2019-10-01",
+ 			"name": "nestedTemplate",
+ 			"resourceGroup": "[parameters('resourceGroup')]",
+ 			"subscriptionId": "[parameters('subscriptionID')]",
+ 			"dependsOn": [
+ 				"[resourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroup'))]"
+ 			],
+ 			"properties": {
+ 				"mode": "Incremental",
+ 				"template": {
+ 					"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ 					"contentVersion": "1.0.0.0",
+ 					"parameters": {},
+ 					"variables": {},
+ 					"resources": [{
+ 						"type": "Microsoft.Storage/storageAccounts",
+ 						"apiVersion": "2018-02-01",
+ 						"name": "[parameters('storageName')]",
+ 						"location": "[parameters('location')]",
+ 						"tags": {
+ 							"displayName": "[parameters('storageAccount')]"
+ 						},
+ 						"sku": {
+ 							"name": "Standard_LRS"
+ 						},
+ 						"kind": "StorageV2",
+ 						"properties": {},
+ 						"resources": [{
+ 								"type": "blobServices/containers",
+ 								"apiVersion": "2018-03-01-preview",
+ 								"name": "[concat('default/', parameters('blob1'))]",
+ 								"dependsOn": [
+ 									"[parameters('storageAccount')]"
+ 								],
+ 								"properties": {
+ 									"publicAccess": "Blob"
+ 								}
+ 							},
+ 							{
+ 								"type": "blobServices/containers",
+ 								"apiVersion": "2018-03-01-preview",
+ 								"name": "[concat('default/', parameters('blob2'))]",
+ 								"dependsOn": [
+ 									"[parameters('storageAccount')]"
+ 								],
+ 								"properties": {
+ 									"publicAccess": "Blob"
+ 								}
+ 							},
+ 							{
+ 								"type": "blobServices/containers",
+ 								"apiVersion": "2018-03-01-preview",
+ 								"name": "[concat('default/', parameters('blob3'))]",
+ 								"dependsOn": [
+ 									"[parameters('storageAccount')]"
+ 								],
+ 								"properties": {
+ 									"publicAccess": "Blob"
+ 								}
+ 							}
+ 						]
+ 					}]
+ 				},
+ 				"parameters": {}
+ 			}
+ 		}
+ 	]
+ }
