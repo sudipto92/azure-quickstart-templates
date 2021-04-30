@@ -44,7 +44,7 @@
 			"properties": {
 				"mode": "Incremental",
 				"templateLink": {
-					"uri": "https://raw.githubusercontent.com/sudipto92/azure-quickstart-templates/master/201-key-vault-secret-create/combi.json",
+					"uri": "https://raw.githubusercontent.com/tomconte/acrwebapp/master/acr.json",
 					"contentVersion ": "1.0 .0 .0"
 				},
 				"parameters": {
